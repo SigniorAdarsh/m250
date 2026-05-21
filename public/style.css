@@ -1,0 +1,252 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #2d5a27; /* Card table green */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- SCREEN VISIBILITY --- */
+.screen {
+    display: none;
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+}
+
+.screen.active {
+    display: block;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- LOBBY STYLES --- */
+#lobby-screen {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#lobby-screen h1 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input, 
+.action-box input, 
+.action-box select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    width: 80%;
+    max-width: 250px;
+    margin-top: 10px;
+}
+
+hr {
+    margin: 30px 0;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.action-box {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 200px;
+}
+
+button {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: #e67e22;
+}
+
+/* --- GAME SCREEN STYLES --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.instruction {
+    font-size: 12px;
+    color: #ccc;
+    margin-top: 5px;
+}
+
+.game-area {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    min-height: 300px;
+    flex-wrap: wrap;
+}
+
+.center-board {
+    flex: 3;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.placeholder {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.players-info {
+    flex: 1;
+    min-width: 200px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.players-info ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.players-info li {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 8px;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background 0.2s;
+}
+
+.players-info li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.my-hand {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+    min-height: 120px;
+}
+
+/* --- CARD STYLES --- */
+.card {
+    background-color: white;
+    color: #333;
+    width: 80px;
+    height: 120px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    user-select: none;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.red-suit {
+    color: #e74c3c;
+}
+
+.board-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.board-card-wrapper small {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* Styling for dragged cards */
+.card[draggable="true"] {
+    cursor: grab;
+}
+
+.card[draggable="true"]:active {
+    cursor: grabbing;
+}
+
+/* Styling for the new Undo button */
+.undo-btn {
+    background-color: #e74c3c;
+    color: white;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 4px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.undo-btn:hover {
+    background-color: #c0392b;
+}

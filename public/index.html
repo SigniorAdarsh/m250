@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Card Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <!-- SCREEN 1: LOBBY -->
+  <div id="lobby-screen" class="screen active">
+    <h1>Card Game</h1>
+    <div class="input-group">
+      <label for="player-name">Your Name:</label>
+      <input type="text" id="player-name" placeholder="Enter your name" />
+    </div>
+
+    <hr>
+
+    <div class="actions">
+      <!-- Join Existing Game -->
+      <div class="action-box">
+        <h3>Join Game</h3>
+        <input type="text" id="join-game-id" placeholder="Enter Game ID" />
+        <button id="btn-join">Join</button>
+      </div>
+
+      <!-- Start New Game -->
+      <div class="action-box">
+        <h3>Start New Game</h3>
+        <select id="player-count">
+          <option value="5">5 Players</option>
+          <option value="6">6 Players</option>
+        </select>
+        <button id="btn-create">Create & Join</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: GAME -->
+  <div id="game-screen" class="screen hidden">
+    <div class="header">
+      <h2>Room ID: <span id="display-room-id"></span></h2>
+      
+      <!-- Only visible to the game creator -->
+      <div id="creator-controls" class="hidden">
+        <button id="btn-distribute">Distribute Cards</button>
+        <p class="instruction">Click a player's name below to declare round winner.</p>
+      </div>
+    </div>
+
+    <div class="game-area">
+      <!-- Cards played in the current round -->
+      <div id="center-board" class="center-board">
+        <p class="placeholder">Center Board</p>
+      </div>
+
+      <!-- List of players in the room -->
+      <div class="players-info">
+        <h3>Players</h3>
+        <ul id="players-list"></ul>
+      </div>
+    </div>
+
+    <!-- The current player's hand -->
+    <div class="my-hand">
+      <h3>Your Cards</h3>
+      <div id="my-cards" class="cards-container"></div>
+    </div>
+  </div>
+
+  <!-- Socket.io client script (served automatically by the backend) -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
