@@ -40,8 +40,23 @@ body {
     margin: 0 auto;
 }
 
-#lobby-screen h1 {
+/* --- LOBBY LOGO & TITLE --- */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Space between the image and the text */
     margin-bottom: 20px;
+}
+
+.logo-container h1 {
+    margin-bottom: 0; /* Remove the old margin so it aligns perfectly with the image */
+}
+
+.game-logo {
+    width: 60px; /* Adjust this number to make it bigger or smaller */
+    height: auto;
+    border-radius: 8px; /* Optional: rounds the corners of the image slightly */
 }
 
 .input-group {
